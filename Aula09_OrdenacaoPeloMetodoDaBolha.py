@@ -2,7 +2,7 @@ def ordenaBolha(v, n):
     troca = 0
     for i in range(n):
         bolha = i
-        while bolha > 1:
+        while bolha > 0:
             if v[bolha] < v[bolha-1]:
                 aux = v[bolha-1]
                 v[bolha-1] = v[bolha]
@@ -10,11 +10,11 @@ def ordenaBolha(v, n):
                 bolha = bolha -1
                 troca += 1
             else:
-                bolha = 1
+                bolha = 0
     print("Foram feitas %d trocas" % troca, end="\n")
 
 
 vetor = [20, 13, 17, -9, 4, 8, 12]
 print(vetor)
-vetor = ordenaBolha(vetor, len(vetor))
+ordenaBolha(vetor, len(vetor))
 print(vetor)
