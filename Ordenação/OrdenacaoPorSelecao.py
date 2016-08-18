@@ -15,5 +15,5 @@ def ordenaSelecao(v):
 
 vetor = [20, 13, 17, -9, 4, 8, 2, -1, -5, 0, -11, 6]
 print(vetor)
-vetorOrdenado = ordenaSelecao(vetor)
-print(vetorOrdenado)
+ordenaSelecao(vetor)
+print(vetor)
