@@ -8,7 +8,7 @@ def ordenaBolha(v):
                 aux = v[bolha-1]
                 v[bolha-1] = v[bolha]
                 v[bolha] = aux
-                bolha = bolha -1
+                bolha -= 1
                 troca += 1
             else:
                 bolha = 0
