@@ -33,26 +33,17 @@ def insere_antes(elemento, posicao, p):
 
 
 def remover(elemento, prim):
-    anterior = prim
-    seguinte = prim
-    if procura_valor(prim, elemento):
-        while seguinte.chave != elemento and seguinte.proximo != None:
-            anterior = seguinte
-            seguinte = seguinte.proximo
-        if anterior.proximo == None:
-            return anterior.chave, None
-        if seguinte.proximo == None:
-            temp = seguinte.chave
+    seguinte, anterior = procura_valor(prim, elemento)
+    if seguinte != None or anterior != None:
+        if anterior == None:
+            return anterior, seguinte.proximo
+
+        elif seguinte.proximo == None:
+            temp = seguinte
             anterior.proximo = seguinte.proximo
             return temp, prim
-        elif anterior.proximo == None:
-            print("anterior.proximo")
-            temp = anterior.chave
-            anterior.proximo = None
-            anterior.chave = None
-            return temp, None
+
         else:
-            aux = Lista()
             temp = seguinte.chave
             aux = seguinte.proximo
             seguinte.chave = aux.chave
@@ -60,20 +51,18 @@ def remover(elemento, prim):
             return temp, prim
 
     else:
-        return  "não existe na lista.", prim
+        return "não existe na lista.", prim
 
 
 def procura_valor(prim, elemento):
     p = prim
-    while p != None and p.chave != elemento:
+    q = None
+    while p != None:
         if p.chave == elemento:
-            achou = True
-        else:
-            p = p.proximo
-    if p != None:
-        return True
-    else:
-        return False
+            return p, q
+        q = p
+        p = p.proximo
+    return None, None
 
 
 def imprime_lista(prim):
@@ -89,17 +78,17 @@ def imprime_lista(prim):
 # Programa Principal
 prim = None
 
-for i in range(0, 31, 3):
+for i in range(0, 7, 3):
     prim = insere_lista(i, prim)
 
 imprime_lista(prim)
 
-for j in range(1, 31, 3):
+for j in range(1, 7, 3):
     insere_depois(j, j + 2, prim)
 
 imprime_lista(prim)
 
-for k in range(2, 31, 3):
+for k in range(2, 7, 3):
     insere_antes(k , k - 1, prim)
 
 imprime_lista(prim)
@@ -114,7 +103,8 @@ while remove != -1:
 imprime_lista(prim)
 
 for valor in range(31):
-    if procura_valor(prim, valor):
+    buscado, anterior = procura_valor(prim, valor)
+    if buscado != None:
         print("Existe ", valor)
     else:
         print("Não existe ", valor)
