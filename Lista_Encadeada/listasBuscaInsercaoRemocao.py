@@ -94,7 +94,7 @@ for k in range(2, 7, 3):
 imprime_lista(prim)
 
 remove = int(input("Qual elemento deseja remover? (-1 - encerrar)\n"))
-while remove != -1:
+while remove != -1 and prim != None:
     removido, prim = remover(remove, prim)
     print("Valor removido", removido)
     imprime_lista(prim)
